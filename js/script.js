@@ -1,3 +1,5 @@
+const clock = document.querySelector('.clock');
+
 function runClock(){
     var time = new Date();
     var hrs = time.getHours();
@@ -11,7 +13,15 @@ function runClock(){
         hrs = 12;
         txt = "AM";
     }
+
+    hrs = hrs<10? '0'+hrs: hrs;
+    min = min<10? '0'+min: min;
+    sec = sec<10? '0'+sec: sec;
+
+    clock.innerHTML = `${hrs} : ${min} : ${sec} ${txt}`;
+
 }
 
 
 runClock();
+setInterval(runClock, 1000);
